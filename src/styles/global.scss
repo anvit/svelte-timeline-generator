@@ -1,0 +1,12 @@
+@use './partials/reset';
+@use './partials/colours' as *;
+
+html, body {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    background-color: $background;
+    color: $text-colour;
+    font-family: Arial, Helvetica, sans-serif;
+}
