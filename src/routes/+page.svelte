@@ -4,6 +4,10 @@
     export let data;
 </script>
 
+<svelte:head>
+    <title>Home | Timeline</title>
+</svelte:head>
+
 <div class="timeline">
     <ul class="timeline__container">
         {#each data.entries as item, i}
