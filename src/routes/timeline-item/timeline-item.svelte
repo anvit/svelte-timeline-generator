@@ -10,7 +10,7 @@
       export let odd;
 </script>
 
-<article class={ odd % 2 === 0 ? "timeline__body" : "timeline__body timeline__body--odd"}>
+<article class={ odd % 2 === 0 ? "timeline-body" : "timeline-body timeline-body--odd"}>
     <h2>{item.title}</h2>
     <p>{item.datetime}</p>
     <p>{item.body}</p>
@@ -18,58 +18,61 @@
         <img src={item.image.src} alt={item.image.alt}/>
     {/if}
     <p>{item.categories}</p>
-    <i class="timeline__icon"></i>
+    <i class="timeline-icon"></i>
 </article>
 
 <style lang="scss">
+    @use '../../styles/partials/variables' as *;
     @use '../../styles/partials/colours' as *;
     @use '../../styles/partials/mixins' as *;
 
-    .timeline__icon {
+    .timeline-icon {
         content: '';
         display: block;
-        width: 3rem;
-        height: 3rem;
+        width: $timeline-icon-size;
+        height: $timeline-icon-size;
         background-color: $primary;
         position: absolute;
-        top: 3rem;
-        left: calc(100% - 1.5rem + 2.5px);
-        border: 3px solid gray;
+        top: $timeline-top-offset;
+        left: calc(100% - ($timeline-icon-size/2) + ($timeline-bar-width / 2));
+        border: $timeline-icon-border solid $timeline-main-colour;
         border-radius: 50%;
     }
-    .timeline__body {
-        background-color: gray;
-        margin-right: 1rem;
-        padding: 2rem;
-        border-radius: 3px;
+    .timeline-body {
+        background-color: $timeline-main-colour;
+        margin-right: $timeline-container-offset;
+        padding: $timeline-content-padding;
+        border-radius: $timeline-content-radius;
+        color: $timeline-text-colour;
+        box-shadow: 4px 4px black;
         &::after {
             display: block;
             content: '';
             width: 0;
             height: 0;
-            border-top: 1rem solid transparent;
-            border-bottom: 1rem solid transparent;
-            border-left: 1rem solid gray;
+            border-top: $triangle-edge solid transparent;
+            border-bottom: $triangle-edge solid transparent;
+            border-left: $triangle-edge solid $timeline-main-colour;
             position: absolute;
-            top: calc(3rem + 6px);
-            right: 2rem;
+            top: calc((2 * $triangle-edge) + ($timeline-icon-size / 2) - ($timeline-icon-border));
+            right: (2 * $triangle-edge);
         }
         &--odd {
             @include desktop {
-                margin-top: -10rem;
+                margin-top: calc(0rem - $timeline-stagger-offset);
                 margin-right: 0;
-                margin-left: 1rem;
-                .timeline__icon {
-                    top: -7rem; 
-                    left: calc(-1.5rem + 2.5px);
+                margin-left: $timeline-container-offset;
+                .timeline-icon {
+                    top: $timeline-top-offset - $timeline-stagger-offset; 
+                    left: calc( ($timeline-bar-width / 2) - ($timeline-icon-size / 2));
                 }
                 &::after {
                     border: 0;
-                    border-top: 1rem solid transparent;
-                    border-bottom: 1rem solid transparent;
-                    border-right: 1rem solid gray;
-                    top: calc(9px - 7rem);
-                    left: 2rem;
+                    border-top: $triangle-edge solid transparent;
+                    border-bottom: $triangle-edge solid transparent;
+                    border-right: $triangle-edge solid $timeline-main-colour;
+                    top: calc((2 * $triangle-edge) + ($timeline-icon-size / 2) + ($timeline-icon-border) - $timeline-stagger-offset );
+                    left: (2 * $triangle-edge);
                 }
             }
         }

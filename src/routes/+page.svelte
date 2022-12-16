@@ -17,6 +17,7 @@
 <style lang="scss">
     @use '../styles/partials/mixins' as *;
     @use '../styles/partials/colours' as *;
+    @use '../styles/partials/variables' as *;
     .timeline {
         width: 100%;
         margin: 0 auto 2rem;
@@ -42,8 +43,8 @@
                 display: block;
                 content: '';
                 height: 100ch;
-                width: 5px;
-                background-color: gray;
+                width: $timeline-bar-width;
+                background-color: $timeline-main-colour;
                 border-radius: 5px;
                 position: absolute;
                 left: 95%;
