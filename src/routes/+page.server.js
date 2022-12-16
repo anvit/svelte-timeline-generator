@@ -12,7 +12,7 @@ export async function load({ params }) {
             title: 'Cats are very good',
             image: {
                 link: 'http://placekitten.com',
-                src: 'http://placekitten.com/200/300',
+                src: 'http://placekitten.com/400/400',
                 alt: 'A placeholder kitten',
                 caption: 'Kitten!',
             },

@@ -11,11 +11,9 @@
 </script>
 
 <article class={ odd % 2 === 0 ? "timeline-body" : "timeline-body timeline-body--odd"}>
-    <div class="timline-body__container">
-        <h2 class="timeline-body__title">{item.title}</h2>
-        <p class="timeline-body__date">{item.datetime}</p>
-        <p class="timeline-body__content">{item.body}</p>
-    </div>
+    <h2 class="timeline-body__title">{item.title}</h2>
+    <p class="timeline-body__date">{item.datetime}</p>
+    <p class="timeline-body__content">{item.body}</p>
     {#if item.image}
         <img class="timeline-body__img" src={item.image.src} alt={item.image.alt}/>
     {/if}
@@ -34,7 +32,6 @@
         border-radius: $timeline-content-radius;
         color: $timeline-text-colour;
         box-shadow: 4px 4px black;
-        display: flex;
         &__title {
             font-size: 1.5rem;
             margin: 0.5rem 0 0.25rem;
@@ -49,9 +46,11 @@
             margin: 1rem 0;
         }
         &__img {
-            margin: 1rem;
+            margin: 1rem auto;
             object-fit: contain;
-            width: 25%;
+            display: block;
+            max-width: 100%;
+            border-radius: $timeline-content-radius;
         }
         &__icon {
             content: '';
