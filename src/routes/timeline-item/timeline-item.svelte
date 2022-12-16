@@ -1,7 +1,7 @@
 <script>
     
     /**
-     * @type {{ title: string; datetime: string; body: string; image?: { src: string; alt: string; }; categories: string[]; }}
+     * @type {{ title: string; faicon: string; datetime: string; body: string; image?: { src: string; alt: string; }; categories: string[]; }}
      */
      export let item;
      /**
@@ -11,14 +11,15 @@
 </script>
 
 <article class={ odd % 2 === 0 ? "timeline-body" : "timeline-body timeline-body--odd"}>
-    <h2>{item.title}</h2>
-    <p>{item.datetime}</p>
-    <p>{item.body}</p>
+    <div class="timline-body__container">
+        <h2 class="timeline-body__title">{item.title}</h2>
+        <p class="timeline-body__date">{item.datetime}</p>
+        <p class="timeline-body__content">{item.body}</p>
+    </div>
     {#if item.image}
-        <img src={item.image.src} alt={item.image.alt}/>
+        <img class="timeline-body__img" src={item.image.src} alt={item.image.alt}/>
     {/if}
-    <p>{item.categories}</p>
-    <i class="timeline-icon"></i>
+    <i class={`timeline-body__icon fa-solid fas fa-${item.faicon}`}></i>
 </article>
 
 <style lang="scss">
@@ -26,18 +27,6 @@
     @use '../../styles/partials/colours' as *;
     @use '../../styles/partials/mixins' as *;
 
-    .timeline-icon {
-        content: '';
-        display: block;
-        width: $timeline-icon-size;
-        height: $timeline-icon-size;
-        background-color: $primary;
-        position: absolute;
-        top: $timeline-top-offset;
-        left: calc(100% - ($timeline-icon-size/2) + ($timeline-bar-width / 2));
-        border: $timeline-icon-border solid $timeline-main-colour;
-        border-radius: 50%;
-    }
     .timeline-body {
         background-color: $timeline-main-colour;
         margin-right: $timeline-container-offset;
@@ -45,6 +34,41 @@
         border-radius: $timeline-content-radius;
         color: $timeline-text-colour;
         box-shadow: 4px 4px black;
+        display: flex;
+        &__title {
+            font-size: 1.5rem;
+            margin: 0.5rem 0 0.25rem;
+        }
+        &__date {
+            font-style: italic;
+            margin: 0.5rem 0 1rem;
+            font-size: 0.85rem;
+            color: $timeline-date-colour;
+        }
+        &__content {
+            margin: 1rem 0;
+        }
+        &__img {
+            margin: 1rem;
+            object-fit: contain;
+            width: 25%;
+        }
+        &__icon {
+            content: '';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: $timeline-icon-colour;
+            width: $timeline-icon-size;
+            height: $timeline-icon-size;
+            background-color: $primary;
+            position: absolute;
+            top: $timeline-top-offset;
+            left: calc(100% - ($timeline-icon-size/2) + ($timeline-bar-width / 2));
+            border: $timeline-icon-border solid $timeline-main-colour;
+            border-radius: 50%;
+        }
         &::after {
             display: block;
             content: '';
@@ -62,7 +86,7 @@
                 margin-top: calc(0rem - $timeline-stagger-offset);
                 margin-right: 0;
                 margin-left: $timeline-container-offset;
-                .timeline-icon {
+                .timeline-body__icon {
                     top: $timeline-top-offset - $timeline-stagger-offset; 
                     left: calc( ($timeline-bar-width / 2) - ($timeline-icon-size / 2));
                 }

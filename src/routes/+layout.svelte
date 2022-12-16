@@ -3,11 +3,15 @@
 </script>
 
 <div class="container">
-    <header class="container__heading">Heading</header>
+    <header class="container__heading">
+        <a href="/" class="link">Home</a>
+    </header>
     <main class="container__main">
         <slot></slot>
     </main>
-    <footer class="container__footer">Copyright ©️ 2022</footer>
+    <footer class="container__footer">
+        <a href="/add-event" class="link">Submit an event!</a>
+    </footer>
 </div>
 
 <style lang="scss">
@@ -32,5 +36,8 @@
             position: fixed;
             bottom: 0;
         }
+    }
+    .link {
+        color: salmon;
     }
 </style>
