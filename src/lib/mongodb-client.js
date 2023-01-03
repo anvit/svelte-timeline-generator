@@ -8,6 +8,7 @@ const options = {
 }
 
 let client
+/** @type Promise<MongoClient> */
 let clientPromise
 
 if (!uri) {

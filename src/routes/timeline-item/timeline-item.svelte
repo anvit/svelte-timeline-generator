@@ -1,7 +1,7 @@
 <script>
     
     /**
-     * @type {{ title: string; faicon: string; datetime: string; body: string; image?: { src: string; alt: string; }; categories: string[]; }}
+     * @type {{ title: string; faicon: string; datetime: Date; body: string; image?: { src: string; alt: string; }; }}
      */
      export let item;
      /**
@@ -12,7 +12,7 @@
 
 <article class={ odd % 2 === 0 ? "timeline-body" : "timeline-body timeline-body--odd"}>
     <h2 class="timeline-body__title">{item.title}</h2>
-    <p class="timeline-body__date">{item.datetime}</p>
+    <p class="timeline-body__date">{item.datetime.toDateString()}</p>
     <p class="timeline-body__content">{item.body}</p>
     {#if item.image}
         <img class="timeline-body__img" src={item.image.src} alt={item.image.alt}/>

@@ -46,7 +46,7 @@
             &::before {
                 display: block;
                 content: '';
-                height: 100ch;
+                height: 100%;
                 width: $timeline-bar-width;
                 background-color: $timeline-main-colour;
                 border-radius: 5px;
