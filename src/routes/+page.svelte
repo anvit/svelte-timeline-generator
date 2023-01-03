@@ -24,7 +24,7 @@
     @use '../styles/partials/variables' as *;
     .timeline {
         width: 100%;
-        margin: 0 auto 2rem;
+        margin: 0 auto 4rem;
         position: relative;
         @include desktop {
             width: 90%;
