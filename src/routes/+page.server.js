@@ -16,7 +16,7 @@ export async function load() {
                 _id: entry._id.toString()
             }
         }).sort( (a, b) => {
-            return b.datetime.getTime() - a.datetime.getTime()
+            return b.datetime.getTime() - a.datetime.getTime();
         });
         return {entries: sortedEntries};
     }

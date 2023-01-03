@@ -1,12 +1,8 @@
 <script>
-    
-    /**
-     * @type {{ title: string; faicon: string; datetime: Date; body: string; image?: { src: string; alt: string; }; }}
-     */
+    /** @typedef {{ _id: string; title: string; faicon: string; datetime: Date; body: string; image?: { src: string; alt: string; }; }} Entry */
+    /** @type Entry*/
      export let item;
-     /**
-     * @type {number}
-     */
+     /** @type {number} */
       export let odd;
 </script>
 
