@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { MongoClient } from 'mongodb';
 
-const uri = import.meta.env.DB_CONNECTION;
+const uri = import.meta.env.VITE_DB_CONNECTION;
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,

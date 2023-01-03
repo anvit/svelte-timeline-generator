@@ -2,8 +2,12 @@
     <title>Submit an event | Timeline</title>
 </svelte:head>
 
+<script>
+  /** @type {import('./$types').ActionData} */
+  export let form;    
+</script>
 <div class="form-container">
-    <form action="/add-event" method="post" class="add-form">
+    <form action="?/add" method="post" class="add-form">
         <label class="add-form__label">
             Title <input class="add-form__input add-form__input--title" type="text" name="title" id="message-title" placeholder="The peanut butter kerfuffle"/>
         </label>
@@ -14,23 +18,23 @@
             Timeline Icon
             <label>
                 <i class="fa-solid fa-burst"></i>
-                <input type="radio" name="timline-icon" id="timeline-icon-burst" value="fa-solid fa-burst" />
+                <input type="radio" name="timeline-icon" id="timeline-icon-burst" value="fa-solid fa-burst" />
             </label>
             <label>
                 <i class="fa-solid fa-handshake-simple"></i>
-                <input type="radio" name="timline-icon" id="timeline-icon-party" value="fa-solid fa-handshake-simple" />
+                <input type="radio" name="timeline-icon" id="timeline-icon-party" value="fa-solid fa-handshake-simple" />
             </label>
             <label>
                 <i class="fa-solid fa-champagne-glasses"></i>
-                <input type="radio" name="timline-icon" id="timeline-icon-party" value="fa-solid fa-champagne-glasses" />
+                <input type="radio" name="timeline-icon" id="timeline-icon-party" value="fa-solid fa-champagne-glasses" />
             </label>
             <label>
                 <i class="fa-solid fa-cake-candles"></i>
-                <input type="radio" name="timline-icon" id="timeline-icon-candles" value="fa-solid fa-cake-candles" />
+                <input type="radio" name="timeline-icon" id="timeline-icon-candles" value="fa-solid fa-cake-candles" />
             </label>
             <label>
                 <i class="fa-solid fa-face-surprise"></i>
-                <input type="radio" name="timline-icon" id="timeline-icon-surprise" value="fa-solid fa-face-surprise" />
+                <input type="radio" name="timeline-icon" id="timeline-icon-surprise" value="fa-solid fa-face-surprise" />
             </label>
         </p>
         <label for="body" class="add-form__label">
@@ -39,16 +43,33 @@
         <textarea class="add-form__textarea" name="body" id="message-body" rows="4" placeholder="On this day…"></textarea>
         <button class="add-form__button">Submit</button>
     </form>
+    {#if form?.success}
+    <p class="form-message form-message--success">Successfully added a new event!</p>
+    {/if}
+
 </div>
 
 <style lang="scss">
 @use '../../styles/partials/colours' as *;
 @use '../../styles/partials/variables' as *;
+@use '../../styles/partials/animations' as *;
 .form-container {
     width: 90%;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form-message {
+    margin: 2rem;
+    padding: 1rem 2.5rem;
+    font-size: 0.8rem;
+    animation: fade 2s ease-in 1s;
+    animation-fill-mode: forwards;
+    &--success {
+        text-shadow: 1px 1px $success-shadow-colour;
+        background-color: $success-colour;
+    }
 }
 .add-form {
     display: flex;
@@ -89,24 +110,3 @@
     }
 }
 </style>
-<!-- {
-    id: 'cat',
-    categories: ['cat'],
-    color: 'green',
-    faicon: 'cat',
-    datetime: '2021-01-01 05:00',
-    title: 'Cats are very good',
-    image: {
-        link: 'http://placekitten.com',
-        src: 'http://placekitten.com/400/400',
-        alt: 'A placeholder kitten',
-        caption: 'Kitten!',
-    },
-    body: "The best thing in the universe is a cardboard box. Chirp at birds catasstrophe for meowwww for hiding behind the couch until lured out by a feathery toy for morning beauty routine of licking self sugar, my siamese, stalks me (in a good way), day and night lick the other cats. Pushed the mug off the table shove bum in owner's face like camera lens or tickle my belly at your own peril i will pester for food when you're in the kitchen even if it's salad and grass smells good, licks your face, but hiiiiiiiiii feed me now.",
-    links: [
-        {
-            href: 'https://en.wikipedia.org/wiki/Cat',
-            linkText: 'Cat',
-        },
-    ],
-}, -->
