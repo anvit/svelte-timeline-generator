@@ -5,13 +5,11 @@
 <div class="container">
     <header class="container__heading">
         <a href="/" class="link">Home</a>
+        <a href="/add-event" class="link">Submit an event!</a>
     </header>
     <main class="container__main">
         <slot></slot>
     </main>
-    <footer class="container__footer">
-        <a href="/add-event" class="link">Submit an event!</a>
-    </footer>
 </div>
 
 <style lang="scss">
@@ -39,5 +37,6 @@
     }
     .link {
         color: salmon;
+        margin: 0 1rem;
     }
 </style>

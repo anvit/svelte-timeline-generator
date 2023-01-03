@@ -9,34 +9,21 @@
 <div class="form-container">
     <form action="?/add" method="post" class="add-form">
         <label class="add-form__label">
-            Title <input class="add-form__input add-form__input--title" type="text" name="title" id="message-title" placeholder="The peanut butter kerfuffle"/>
+            <p>Title<span class="required-icon">*</span></p> <input class="add-form__input add-form__input--title" type="text" name="title" id="message-title" placeholder="The peanut butter kerfuffle" required />
         </label>
         <label class="add-form__label">
             When did this happen? <input class="add-form__input add-form__input--date" type="date" name="date" id="message-date">
         </label>
-        <p class="add-form__label">
-            Timeline Icon
-            <label>
-                <i class="fa-solid fa-burst"></i>
-                <input type="radio" name="timeline-icon" id="timeline-icon-burst" value="fa-solid fa-burst" />
-            </label>
-            <label>
-                <i class="fa-solid fa-handshake-simple"></i>
-                <input type="radio" name="timeline-icon" id="timeline-icon-party" value="fa-solid fa-handshake-simple" />
-            </label>
-            <label>
-                <i class="fa-solid fa-champagne-glasses"></i>
-                <input type="radio" name="timeline-icon" id="timeline-icon-party" value="fa-solid fa-champagne-glasses" />
-            </label>
-            <label>
-                <i class="fa-solid fa-cake-candles"></i>
-                <input type="radio" name="timeline-icon" id="timeline-icon-candles" value="fa-solid fa-cake-candles" />
-            </label>
-            <label>
-                <i class="fa-solid fa-face-surprise"></i>
-                <input type="radio" name="timeline-icon" id="timeline-icon-surprise" value="fa-solid fa-face-surprise" />
-            </label>
-        </p>
+        <label class="add-form__label">
+            <p>What kind of event?<span class="required-icon">*</span></p>
+            <select class="add-form__select" name="timeline-icon" required>
+                <option value="fa-solid fa-burst">💥</option>
+                <option value="fa-solid fa-handshake-simple">🤝🏼</option>
+                <option value="fa-solid fa-champagne-glasses">🥂</option>
+                <option value="fa-solid fa-cake-candles">🎂</option>
+                <option value="fa-solid fa-surprise">😮</option>
+            </select>
+        </label>
         <label for="body" class="add-form__label">
             Details 
         </label>
@@ -53,6 +40,11 @@
 @use '../../styles/partials/colours' as *;
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/animations' as *;
+.required-icon {
+    color: lighten($error-colour, 10%);
+    margin-left: 2px;
+    font-size: 1rem;
+}
 .form-container {
     width: 90%;
     margin: 0 auto;
@@ -75,7 +67,10 @@
     display: flex;
     flex-direction: column;
     &__label {
-        margin: 0.25rem 0;
+        margin: 0.5rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     &__input {
         padding: 0.5rem;
@@ -86,12 +81,18 @@
             width: 15rem;
         }
     }
+    &__select {
+        padding: 0.5rem;
+        border-radius: 5px;
+    }
     &__textarea {
         width: 20rem;
+        height: 6rem;
         margin: 0.5rem 0;
         padding: 0.5rem;
         border: 0;
         border-radius: $input-border-radius;
+        font-size: 0.8rem;
     }
     &__button {
         padding: 0.5rem;

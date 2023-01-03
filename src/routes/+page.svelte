@@ -1,5 +1,4 @@
 <script>
-    // @ts-nocheck
     import TimelineItem from './timeline-item/timeline-item.svelte';
     /** @type {import('./$types').PageData} */
     export let data;

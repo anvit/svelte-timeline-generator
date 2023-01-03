@@ -11,7 +11,13 @@ export async function load() {
     if (findResult) {
         const sortedEntries = findResult.map(entry => {
             return {
-                ...entry,
+                title: entry.title,
+                faicon: entry.faicon,
+                body: entry.body,
+                image: entry.image && {
+                    src: entry.image.src,
+                    alt: entry.title
+                },
                 datetime: new Date(entry.datetime),
                 _id: entry._id.toString()
             }
