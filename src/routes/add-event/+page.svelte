@@ -12,7 +12,7 @@
             <p>Title<span class="required-icon">*</span></p> <input class="add-form__input add-form__input--title" type="text" name="title" id="message-title" placeholder="The peanut butter kerfuffle" required />
         </label>
         <label class="add-form__label">
-            When did this happen? <input class="add-form__input add-form__input--date" type="date" name="date" id="message-date">
+            <p>When did this happen?<span class="required-icon">*</span></p> <input class="add-form__input add-form__input--date" type="date" name="date" id="message-date" required>
         </label>
         <label class="add-form__label">
             <p>What kind of event?<span class="required-icon">*</span></p>
