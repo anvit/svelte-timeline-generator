@@ -1,9 +1,9 @@
 <script>
     /** @typedef {{ _id: string; title: string; faicon: string; datetime: Date; body: string; image?: { src: string; alt: string; }; }} Entry */
     /** @type Entry*/
-     export let item;
-     /** @type {number} */
-      export let odd;
+    export let item;
+    /** @type {number} */
+    export let odd;
 </script>
 
 <article class={ odd % 2 === 0 ? "timeline-body" : "timeline-body timeline-body--odd"}>

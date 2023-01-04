@@ -24,16 +24,6 @@
             background-color: $primary;
             margin-bottom: 2rem;
         }
-        &__footer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: $primary;
-            width: 100%;
-            height: 3rem;
-            position: fixed;
-            bottom: 0;
-        }
     }
     .link {
         color: salmon;

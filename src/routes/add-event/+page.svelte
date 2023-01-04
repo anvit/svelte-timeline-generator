@@ -3,8 +3,8 @@
 </svelte:head>
 
 <script>
-  /** @type {import('./$types').ActionData} */
-  export let form;    
+    /** @type {import('./$types').ActionData} */
+    export let form;
 </script>
 <div class="form-container">
     <form action="?/add" method="post" class="add-form">
@@ -25,7 +25,7 @@
             </select>
         </label>
         <label for="body" class="add-form__label">
-            Details 
+            Details
         </label>
         <textarea class="add-form__textarea" name="body" id="message-body" rows="4" placeholder="On this day…"></textarea>
         <button class="add-form__button">Submit</button>
